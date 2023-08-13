@@ -1,17 +1,16 @@
-T = int(input())
-for _ in range(T):
-    stack = []
+T = int(input()) #입력 개수 나타내는 정수 T
+for _ in range(T): #T번 반복
+    stk = [] #스택 설정
     isVPS = True
-    for char in input():
-        if char == '(':
-            stack.append(char) #여는 괄호 들어왔을 때 append
-        else:
-            if len(stack) > 0: #stack이 비어있는데 빼려고 하면 오류가 나버림
-                stack.pop() #닫는 괄호 들어 왔을 때 stack의 상단의 값과 매칭하여 pop
+    for ch in input(): #문자를 input()이 되는동안 반복문
+        if ch == '(': #(이면 append
+            stk.append(ch) #(를 stk에 삽입
+        else: #)이면 pop (단, 스택이 비어있지 않아야 함)
+            if len(stk) > 0:
+                stk.pop()
             else:
                 isVPS = False
                 break
-    if len(stack) > 0: #len(stack > 0)과 stack은 같은 표현
+    if len(stk) > 0:
         isVPS = False
     print('YES' if isVPS else 'NO')
-        
