@@ -1,9 +1,14 @@
-def dfs(graph, visited, node):
-    visited[node] = True
+def dfs_stack(graph, visited, start_node):
+    stack = [start_node]
+    visited[start_node] = True
     count = 0
-    for next in graph[node]:
-        if not visited[next]:
-            count += 1 + dfs(graph, visited, next)
+    while stack:
+        node = stack.pop()
+        for next in graph[node]:
+            if not visited[next]:
+                stack.append(next)
+                visited[next] = True
+                count += 1
     return count
     
 n = int(input())
@@ -17,4 +22,4 @@ for _ in range(m):
     graph[a].append(b)
     graph[b].append(a)
 
-print(dfs(graph, visited, 1))
+print(dfs_stack(graph, visited, 1))
