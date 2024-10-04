@@ -1,25 +1,30 @@
-def dfs_stack(graph, visited, start_node):
-    stack = [start_node]
-    visited[start_node] = True
-    count = 0
-    while stack:
-        node = stack.pop()
-        for next in graph[node]:
-            if not visited[next]:
-                stack.append(next)
-                visited[next] = True
-                count += 1
-    return count
-    
-n = int(input())
-m = int(input())
+import sys
+input = sys.stdin.readline
 
-graph = [ [] for _ in range(n+1) ] #1부터 인덱싱하기 위해 n+1로 설정
-visited = [False] * (n+1) #1부터 인덱싱하기 위해 n+1로 설정
-
-for _ in range(m):
-    a, b = map(int, input().split())
+N = int(input())
+M = int(input())
+network = [list(map(int, input().split())) for _ in range(M)]
+graph = [[] for _ in range(N + 1)]
+visited = [False] * (N + 1)
+visited[1] = True
+for a, b in network:
     graph[a].append(b)
     graph[b].append(a)
 
-print(dfs_stack(graph, visited, 1))
+
+def dfs_stack():
+    stack = []
+    stack.append(1)
+    count = 0
+
+    while stack:
+        node = stack.pop()
+        for next_node in graph[node]:
+            if not visited[next_node]:
+                visited[next_node] = True
+                stack.append(next_node)
+                count += 1
+    return count
+
+
+print(dfs_stack())
