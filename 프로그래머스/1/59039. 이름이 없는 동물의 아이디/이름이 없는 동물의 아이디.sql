@@ -1,0 +1,5 @@
+-- 코드를 입력하세요
+# 동물보호소 동물 정보(ANIMAL_INS)
+
+SELECT ANIMAL_ID FROM ANIMAL_INS
+WHERE NAME IS NULL;
