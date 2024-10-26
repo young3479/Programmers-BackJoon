@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+# 판매중인 도서 정보: BOOK, 저자 정보: AUTHOR
+# 경제 카테고리에 속하는 아이디, 저자, 출판일 출력, 출판일 오름차순
+SELECT B.BOOK_ID, A.AUTHOR_NAME, DATE_FORMAT(B.PUBLISHED_DATE, '%Y-%m-%d') AS PUBLISHED_DATE
+FROM BOOK B JOIN AUTHOR A ON B.AUTHOR_ID = A.AUTHOR_ID
+WHERE CATEGORY = '경제'
+ORDER BY PUBLISHED_DATE;
