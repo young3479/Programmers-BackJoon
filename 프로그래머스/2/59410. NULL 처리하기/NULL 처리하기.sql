@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+# 보호소 동물 정보: ANIMAL_INS
+# 이름이 없는 동물 이름은 No name으로
+SELECT ANIMAL_TYPE, 
+CASE WHEN NAME IS NULL THEN 'No name'
+ELSE NAME
+END AS NAME, SEX_UPON_INTAKE FROM ANIMAL_INS
