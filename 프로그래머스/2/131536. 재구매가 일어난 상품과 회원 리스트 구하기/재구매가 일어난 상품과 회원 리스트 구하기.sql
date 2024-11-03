@@ -1,0 +1,7 @@
+-- 코드를 입력하세요
+# 의류 온라인 상품 판매 정보: ONLINE_SALE
+# 재구매 회원: 유저아이디로 그룹바이(유저별 상품 횟수)
+SELECT USER_ID, PRODUCT_ID FROM ONLINE_SALE
+GROUP BY USER_ID, PRODUCT_ID
+HAVING COUNT(*) >= 2
+ORDER BY USER_ID ASC, PRODUCT_ID DESC;
